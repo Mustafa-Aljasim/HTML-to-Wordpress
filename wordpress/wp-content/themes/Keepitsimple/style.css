@@ -1,0 +1,16 @@
+/*
+Theme Name: Keep it simple
+Version: 1.0
+Author: Mustafa Aljasim
+Author URI: https://mustafaaljasim.com
+Description: The wordpress version of Keep it Simple site.
+License: GNU General Puplic License V2 or later
+License URI: https://mustafaajlasim.com
+Text Domain: Keepitsimple
+Tags: Simple theme, greeen, RTL Support.
+This theme, like Wordpress
+*/
+
+h1{
+    color: brown;
+}
