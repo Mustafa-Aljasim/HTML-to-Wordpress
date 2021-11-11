@@ -21,18 +21,20 @@
 
    <?php if (is_rtl()): ?>
    		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/keepitsimple-rtl.css">
+		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style-rtl.css">
    <?php else: ?>
   		 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/keepitsimple.css">
+		 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css">
    <?php endif; ?>
 
    <!-- Script
    ================================================== -->
-	<script src="/assets/js/modernizr.js"></script>
+	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/modernizr.js"></script>
 
    <!-- Favicons
 	================================================== -->
 	<link rel="shortcut icon" href="favicon.png" >
-
+	<?php wp_head(); ?>
 </head>
 
 <body>

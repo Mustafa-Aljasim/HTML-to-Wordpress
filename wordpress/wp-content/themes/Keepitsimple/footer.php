@@ -75,7 +75,7 @@
    <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
    <script type="text/javascript" src="assets/js/jquery-migrate-1.2.1.min.js"></script>  
    <script src="assets/js/main.js"></script>
-
+   <?php wp_footer(); ?>
 </body>
 
 </html>
