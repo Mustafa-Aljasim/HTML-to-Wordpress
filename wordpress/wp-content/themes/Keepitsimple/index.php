@@ -2,7 +2,7 @@
 <!--[if lt IE 8 ]><html class="no-js ie ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]><html class="no-js ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="no-js ie ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 8)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if (gte IE 8)|!(IE)]><!--><html class="no-js" lang="<?php bloginfo("language"); ?>"> <!--<![endif]-->
 <head>
 
    <!--- Basic Page Needs
@@ -18,8 +18,12 @@
 
    <!-- CSS
     ================================================== -->
-   <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/keepitsimple.css">
 
+   <?php if (is_rtl()): ?>
+   		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/keepitsimple-rtl.css">
+   <?php else: ?>
+  		 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/keepitsimple.css">
+   <?php endif; ?>
 
    <!-- Script
    ================================================== -->
@@ -41,7 +45,7 @@
 
    		<div class="header-content twelve columns">
 
-		      <h1 id="logo-text"><a href="index.html" title=""><?php bloginfo("name"); ?></a></h1>
+		      <h1 id="logo-text"><a href="<?php bloginfo("wpurl"); ?>" title=""><?php bloginfo("name"); ?></a></h1>
 				<p id="intro"><?php bloginfo("description"); ?></p>
 
 			</div>			
@@ -89,118 +93,44 @@
 
    		<div id="main" class="eight columns">
 
-	   		<article class="entry">
+		   <?php 
+			if(have_posts()):
+				while(have_posts()):
+					the_post(); ?>
+					<article class="entry">
 
 					<header class="entry-header">
 
 						<h2 class="entry-title">
-							<a href="single.html" title="">Hey, We Love Open Sans!</a>
+							<a href="<?php the_permalink();?>" title=""><?php the_title(); ?></a>
 						</h2> 				 
 					
 						<div class="entry-meta">
 							<ul>
-								<li>July 12, 2014</li>
+								<li><?php the_date(); ?></li>
 								<span class="meta-sep">&bull;</span>								
-								<li><a href="#" title="" rel="category tag">Ghost</a></li>
+								<li><a href="#" title="" rel="category tag"><?php the_category(" "); ?></a></li>
 								<span class="meta-sep">&bull;</span>
-								<li>John Doe</li>
+								<li><?php the_author(); ?></li>
 							</ul>
 						</div> 
 					 
 					</header> 
 					
 					<div class="entry-content">
-						<p>Duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat dolor sunt sint sit nisi est eu exercitation incididunt adipisicing veniam velit id fugiat enim mollit amet anim veniam dolor dolor irure velit commodo cillum sit nulla ullamco magna amet magna cupidatat qui labore cillum sit in tempor veniam consequat non laborum adipisicing aliqua ea nisi sint ut quis proident ullamco ut dolore culpa occaecat ut laboris in sit minim cupidatat ut dolor voluptate enim veniam consequat occaecat fugiat in adipisicing in amet Ut nulla nisi non ut enim aliqua laborum mollit quis nostrud sed sed.</p>
+						<?php the_excerpt(); ?>
+						<a href="<?php the_permalink();?>">Read More</a>
 					</div> 
 
 				</article> <!-- end entry -->
+				<?php
+				
+				endwhile;
+			else: 
+				echo"There are no articles";
+			endif;
+			?>
 
-				<article class="entry">
-	   			
-					<header class="entry-header">
-
-						<h2 class="entry-title">
-							<a href="single.html" title="">We All Love Good Typography.</a>
-						</h2> 				 
-					
-						<div class="entry-meta">
-							<ul>
-								<li>July 11, 2014</li>
-								<span class="meta-sep">&bull;</span>							
-								<li>
-									<a href="#" title="" rel="category tag">Wordpress</a>,
-									<a href="#" title="" rel="category tag">Ghost</a>  
-								</li>
-								<span class="meta-sep">&bull;</span>
-								<li>Jane Doe</li>
-							</ul>
-						</div>
-					 
-					</header> 			
-
-					<div class="entry-content">
-						<p>Duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat dolor sunt sint sit nisi est eu exercitation incididunt adipisicing veniam velit id fugiat enim mollit amet anim veniam dolor dolor irure velit commodo cillum sit nulla ullamco magna amet magna cupidatat qui labore cillum sit in tempor veniam consequat non laborum adipisicing aliqua ea nisi sint ut quis proident ullamco ut dolore culpa occaecat ut laboris in sit minim cupidatat ut dolor voluptate enim veniam consequat occaecat fugiat in.</p>
-					</div> 
-
-				</article> <!-- end entry -->
-
-				<article class="entry">
-	   			
-					<header class="entry-header">
-
-						<h2 class="entry-title">
-							<a href="single.html" title="">White Space Everywhere.</a>
-						</h2> 				 
-					
-						<div class="entry-meta">
-							<ul>
-								<li>July 10, 2014</li>
-								<span class="meta-sep">&bull;</span>								
-								<li>
-									<a href="#" title="" rel="category tag">Joomla</a>,
-									<a href="#" title="" rel="category tag">Drupal</a>  
-								</li>
-								<span class="meta-sep">&bull;</span>
-								<li>Naruto Uzumaki</li>
-							</ul>
-						</div> 
-					 
-					</header> 			
-
-					<div class="entry-content">
-						<p>Duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat dolor sunt sint sit nisi est eu exercitation incididunt adipisicing veniam velit id fugiat enim mollit amet anim veniam dolor dolor irure velit commodo cillum sit nulla ullamco magna amet magna cupidatat qui labore cillum sit in tempor veniam consequat non laborum adipisicing aliqua ea nisi sint ut quis proident ullamco ut dolore culpa occaecat ut laboris in sit minim cupidatat ut dolor voluptate enim veniam consequat occaecat fugiat in adipisicing in amet Ut nulla nisi non ut enim aliqua laborum mollit quis nostrud sed sed.</p>
-					</div> 
-
-				</article> <!-- end entry -->  
-
-				<article class="entry">
-	   			
-					<header class="entry-header">
-
-						<h2 class="entry-title">
-							<a href="single.html" title="">Simple And Minimalist Designs.</a>
-						</h2> 				 
-					
-						<div class="entry-meta">
-							<ul>
-								<li>July 09, 2014</li>
-								<span class="meta-sep">&bull;</span>								
-								<li>
-									<a href="#" title="" rel="category tag">Ghost</a>  
-								</li>
-								<span class="meta-sep">&bull;</span>
-								<li>Naruto Uzumaki</li>
-							</ul>
-						</div> 
-					 
-					</header> 			
-
-					<div class="entry-content">
-						<p>Duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat dolor sunt sint sit nisi est eu exercitation incididunt adipisicing veniam velit id fugiat enim mollit amet anim veniam dolor dolor irure velit commodo cillum sit nulla ullamco magna amet magna cupidatat qui labore cillum sit in tempor veniam consequat non laborum adipisicing aliqua ea nisi sint ut quis proident ullamco ut dolore culpa occaecat ut laboris in sit minim cupidatat ut dolor voluptate enim veniam consequat occaecat fugiat in adipisicing in amet Ut nulla nisi non ut enim aliqua laborum mollit quis nostrud sed sed.</p>
-					</div> 
-
-				</article> <!-- end entry -->  	
-						
 
    		</div> <!-- end main -->
 
