@@ -1,5 +1,11 @@
 	<div id="sidebar" class="four columns">
+            <?php 
 
+            if (is_active_sidebar('sidebar1')){
+               dynamic_sidebar('sidebar1');
+            }
+            
+          ?>
    			<div class="widget widget_search">
                   <h3>Search</h3> 
                   <form action="#">
