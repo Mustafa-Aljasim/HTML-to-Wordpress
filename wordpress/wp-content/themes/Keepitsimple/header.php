@@ -54,34 +54,22 @@
 
 	   </div>
 
-	   <nav id="nav-wrap"> 
+	   <nav id="nav-wrap" style='top:38px'<?php if(is_admin_bar_showing()){echo "style='top:38px'";}?> > 
 
 	   	<a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show Menu</a>
 		   <a class="mobile-btn" href="#" title="Hide navigation">Hide Menu</a>
 
-	   	<div class="row">    		            
+			<?php
+				$upper_menu = array(
+					'menu' => 'upper-menu',
+					'theme_location' => 'upper-menu',
+					'container_class' => 'row',
+					'items_wrap' => '<ul id="nav" class="nav %2$s">%3$s</ul>'
+				);
+				wp_nav_menu($upper_menu);
+			?>
 
-			   	<ul id="nav" class="nav">
-			      	<li class="current"><a href="index.html">Home</a></li>
-			      	<li class="has-children"><a href="#">Dropdown</a>
-	                  <ul>
-	                     <li><a href="#">Submenu 01</a></li>
-	                     <li><a href="#">Submenu 02</a></li>
-	                     <li><a href="#">Submenu 03</a></li>
-	                  </ul>
-	               </li>
-	               <li><a href="demo.html">Demo</a></li>	
-	               <li><a href="archives.html">Archives</a></li>
-			      	<li class="has-children"><a href="single.html">Blog</a>
-							<ul>
-	                     <li><a href="blog.html">Blog Entries</a></li>
-	                     <li><a href="single.html">Single Blog</a></li>	                     
-	                  </ul>
-			      	</li>		      	
-			      	<li><a href="page.html">Page</a></li>
-			   	</ul> <!-- end #nav -->			   	 
-
-	   	</div> 
+		
 
 	   </nav> <!-- end #nav-wrap --> 	     
 

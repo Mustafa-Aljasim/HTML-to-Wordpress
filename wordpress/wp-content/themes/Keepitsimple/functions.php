@@ -28,4 +28,14 @@ function keepitsimple_register_siderbars(){
 }
     add_action('widgets_init','keepitsimple_register_siderbars');
 
+    //Keepitsimple regist menus
+
+    function keepitsimple_register_menus(){
+        $keepitsimple_menus = array(
+            'upper-menu' => 'Main Menu',
+            'footer-menu' => 'Footer Menu'
+        );
+        register_nav_menus($keepitsimple_menus);
+    }
+    add_action('init', 'keepitsimple_register_menus');
 ?>
